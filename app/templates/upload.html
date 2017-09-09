@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Files upload! </h1>
+<form method="post" action="/upload" enctype="multipart/form-data">
+    {{ form.hidden_tag() }}
+    {{ form.attach.label}} {{ form.attach }}
+    <input type="submit" value="Submit">
+</form>
+{% endblock %}

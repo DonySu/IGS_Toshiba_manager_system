@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% from '_field.html' import render_field %}
+
+{% block script %}
+    
+{% endblock %}
+
+{% block content %}
+<div>
+    <div class="notices_list_top"><b>Notices List</b></div>
+    
+    <div class="notices_list_content">
+        <table class="notices_list_label" border="1">
+            <tr>
+                <td class="notices_list_type">Type</td>
+                <td class="notices_list_title">Title</td>
+                <td class="notices_list_author">Author</td>
+                <td class="notices_list_create_date">Create_date</td>
+            </tr>
+        </table>
+        
+        <table class="notices_list_table">
+            {% for i in notices_num %}
+                <tr>
+                    <td class="notices_list_table_type">{{notices_list.items[i-(page_index-1)*page_full_num].species}}</td>
+                    <td class="notices_list_table_title">
+                        <a href="/notices/{{notices_list.items[i-(page_index-1)*page_full_num].id}}" class="notices_list_content_lists">
+                            {{notices_list.items[i-(page_index-1)*page_full_num].title}}
+                        </a>
+                    </td>
+                    <td class="notices_list_table_author">{{notices_list.items[i-(page_index-1)*page_full_num].author}}</td>
+                    <td class="notices_list_table_create_date">{{notices_list.items[i-(page_index-1)*page_full_num].create_date}}</td>
+               </tr>
+            {% endfor %}
+        </table>
+        
+        <div class="notices_list_directions">
+            <span class="notices_list_directions_form">
+                <form method="post" action="">
+                    {{form.hidden_tag()}}
+                    <span id="notices_list_direction_input">{{form.page_num}}</span>
+                    <span><input type=image src="../static/PIC/ok_01.png" id="notices_list_ok_img" alt="Submit"></span>
+                    <!--<span><input type="submit" value="Go"></span>-->
+                    <!--这里需要注意：提交按钮可以用submit按钮，也可以用type=image来提交，但是必须确保input在div或者span里面，否则检测不到提交-->
+                </form>
+            </span>
+            {% if notices_list.has_next %}
+                <span class="notices_list_directions_next">
+                    <a href="/notices_list/{{notices_list.next_num}}">
+                        <img src="../static/PIC/next_1.png" id="notices_list_next_img">
+                    </a>
+                    <span>&nbsp;&nbsp;</span>
+                </span>
+            {% endif %}
+            {% if notices_list.has_prev %}
+                <span class="notices_list_directions_prev">
+                    <a href="/notices_list/{{notices_list.prev_num}}">
+                        <img src="../static/PIC/previous_01.png" id="notices_list_prev_img">
+                    </a>
+                    <span>&nbsp;&nbsp;</span>
+                </span>                
+            {% endif %}
+        </div>  
+    </div>
+</div>
+{% endblock %}

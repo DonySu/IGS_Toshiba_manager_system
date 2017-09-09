@@ -1,0 +1,144 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div id="index_background" style="position: absolute;left: 0px;top: 0px; width: 100%;height: 100%">
+    <div class="index_top">
+        <div class="index_top_h1"><h1 id="index_top_h1">Hello, {{user.username.upper()}}!</h1>
+        </div>
+            
+        <div class="index_top_buttons_link">
+            <ul>
+               <li><a href="/user_info/{{user.username}}" id="index_top_link1"><input type="button" value="Show User Info" ></a></li>
+               <li><a href="/logout" target="_blank" id="index_top_link2"><input type="button" value="Logout" ></a></li>
+            </ul>
+        </div>
+        
+        <div class="index_top_date_time_info">
+            <ul>
+                <li><img id="index_top_date_img" src="../static/PIC/calendar.png">
+                    <span id="dayshow"></span>
+                </li>
+                <li>&nbsp;&nbsp;&nbsp;</li>
+                <li><img id="index_top_time_img" src="../static/PIC/clock-flat.png">
+                    <span id="timeshow"></span>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="index_top_feedback">
+            <div id="index_feedback_img">
+             <img src="../static/PIC/Panda.gif" id="feedback_img">
+            </div>
+            <div id="index_feedback_title">Feedback</div>
+        </div>
+    </div>
+    
+    <div class="index_middle">
+        <div class="index_middle_left">
+            <div id="index_middle_left_link1">
+                <ul>
+                    <li><img id="index_img1" src="../static/PIC/imac.png"></li>
+                    <li id="loms_character">LOMS</li>
+                </ul>
+            </div>
+        
+            <div id="index_middle_left_link2">
+                <ul>
+                    <li><img id="index_img2" src="../static/PIC/gamecenter.png"></li>
+                    <li><span id="blog_character" style="height: 30px;">BLOG</span></li>
+                </ul>
+            </div>    
+            
+            <div id="index_middle_left_link3">
+                <ul>
+                    <li><img id="index_img3" src="../static/PIC/fingerprint.png"></li>
+                    <li><span id="admin_character" style="height: 30px;"><a href="/manage/1" id="index_admin">Admin</a></span></li>
+                </ul>
+            </div>
+            
+             <div id="index_middle_left_link4">
+                <ul>
+                    <li><img id="index_img4" src="../static/PIC/textedit.png"></li>
+                    <li><span id="trainning_character" style="height: 30px;">Trainning</span></li>
+                </ul>
+            </div>    
+        </div>
+    
+        <div class="index_middle_right">
+            <div class="index_middle_right_latest_news">
+                <p>
+                    <span id="index_notice_title"><b>Latest Notices</b></span>
+                    <span>
+                        <img src="../static/PIC/notice.gif" style="width: 16px;height: 16px;background-color: yellow">
+                    </span>
+                    <span id="index_notice_more"><a href="/notices_list/1"><img src="../static/PIC/more.gif"></a></span>
+                </p>
+                <p>
+                    <marquee direction="right" behavior="alternate" scrollamount="2">
+                        <a href="/notices/{{notice1.id}}" class="index_notices_link">
+                            <span class="index_notices_type">[{{notice1.species}}]</span>
+                            <span class="index_notices_title">{{notice1.title}}</span>
+                            <span>&nbsp;</span>
+                            <span class="index_notices_create_date">{{notice1.create_date}}</span>
+                        </a>
+                    </marquee>
+                </p>
+                    
+                <p>
+                    <marquee direction="right" behavior="alternate" scrollamount="2">
+                        <a href="/notices/{{notice2.id}}" class="index_notices_link">
+                            <span class="index_notices_type">[{{notice2.species}}]</span>
+                            <span class="index_notices_title">{{notice2.title}}</span>
+                            <span>&nbsp;</span>
+                            <span class="index_notices_create_date">{{notice2.create_date}}</span>
+                        </a>
+                    </marquee>
+                </p>  
+                    
+                <p>
+                    <marquee direction="right" behavior="alternate" scrollamount="2">
+                        <a href="/notices/{{notice3.id}}" class="index_notices_link">
+                            <span class="index_notices_type">[{{notice3.species}}]</span>
+                            <span class="index_notices_title">{{notice3.title}}</span>
+                            <span>&nbsp;</span>
+                            <span class="index_notices_create_date">{{notice3.create_date}}</span>
+                        </a>
+                    </marquee>
+                </p>
+                   
+                <p>
+                    <marquee direction="right" behavior="alternate" scrollamount="2">
+                        <a href="/notices/{{notice4.id}}" class="index_notices_link">
+                            <span class="index_notices_type">[{{notice4.species}}]</span>
+                            <span class="index_notices_title">{{notice4.title}}</span>
+                            <span>&nbsp;</span>
+                            <span class="index_notices_create_date">{{notice4.create_date}}</span>
+                        </a>
+                    </marquee>
+                </p>
+                    
+                <p>
+                    <marquee direction="right" behavior="alternate" scrollamount="2">
+                        <a href="/notices/{{notice5.id}}" class="index_notices_link">
+                            <span class="index_notices_type">[{{notice5.species}}]</span>
+                            <span class="index_notices_title">{{notice5.title}}</span>
+                            <span>&nbsp;</span>
+                            <span class="index_notices_create_date">{{notice5.create_date}}</span>
+                        </a>
+                    </marquee>
+                </p>
+            </div>
+            
+            <div class="index_middle_right_latest_topics">
+                <h1>The top discussing topics in blog.</h1>
+            </div>
+        </div>
+    </div>
+    
+    <div class="index_bottom">
+        <div id="index_bottom_img"><img src="../static/PIC/directions.png">1.0</div>
+        <div id="index_bottom_content"><marquee direction="left" scrollamount="3" scrolldelay="100">
+            The system is under development. Just for inside review now~~~</marquee></div>
+    </div>
+</div>
+{% endblock %}

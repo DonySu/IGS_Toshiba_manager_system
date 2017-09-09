@@ -1,0 +1,15 @@
+{% macro render_field_1(field,olddata) %}
+<tr>
+    <td>{{ field.label }}&nbsp;&nbsp;&nbsp;</td>
+    <td>{{ field(**kwargs) }}</td>
+    <td style="color: royalblue" class="old">{{olddata[field.name]}}</td>
+    <td>{% if field.errors %}
+        <ul>
+        {% for error in field.errors %}
+            <li style="color: red">{{error}}</li>
+        {% endfor %}
+        </ul>
+        {% endif %}
+    </td>
+</tr>
+{% endmacro %}

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="notice_all" style="position: absolute;left: 0px;right: 0px;width: 90%;height: 100%">
+    <div class="notices_title">{{notice.title}}</div>
+    <div>
+        <span class="notices_author">Author:{{notice.author}}</span>
+        <span class="notices_species">Type:{{notice.species}}</span>
+    </div>
+    <div class="notices_create_date">Create Date:{{notice.create_date}}</div>
+    <br>
+    <div class="notices_content" ><br>{{notice.content}}</div>
+</div>
+{% endblock %}

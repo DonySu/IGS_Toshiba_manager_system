@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>EDIT</h1>
+{% from '_field_1.html' import render_field_1 %}
+{% from '_field.html' import render_field %}
+<script src="../static/Fill_data.js" type="text/javascript"></script>
+<form action="/edit/{{username}}" method="post">
+    {{form.hidden_tag()}}
+    <table>
+    {{ render_field_1(form.password,olddata) }}
+    {{ render_field(form.confirm) }}
+    {{ render_field_1(form.email,olddata) }}
+    {{ render_field_1(form.phone,olddata) }}
+    {{ render_field_1(form.section,olddata) }}
+    {{ render_field_1(form.user_img,olddata) }}
+    </table>
+    <br>
+    <br>
+    <button onclick="fill_data()" type="button">Fill Old Data</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="submit" value="Confirm">
+</form>
+{% endblock %}

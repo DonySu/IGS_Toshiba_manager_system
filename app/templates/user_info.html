@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>User Info: {{user.username.upper()}}</h1>
+<table>
+    <tr><img src="app/uploads/{{user.user_img}}" height="60px" width="60px"> {{user.username.upper()}}</tr><br>
+    <tr>WorkID: {{user.workid}}</tr><br>
+    <tr>Email: {{user.email}}</tr><br>
+    <tr>Section: {{user.section.upper()}}</tr><br>
+    <tr>Phone: {{user.phone}}</tr><br>
+    <tr>Gender: {{user.gender.upper()}}</tr>
+</table>
+<p>
+<!--<a href="/upload" target="_blank" class="user_image_change">Change your account's PIC <input type="button" value="Upload"></a>-->
+    <a href="/edit/{{user.username}}" class="user_info_edit"><input type="button" value="Edit"></a>
+</p>
+{% endblock %}

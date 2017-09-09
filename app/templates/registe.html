@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Registe</h1>
+{% from '_field.html' import render_field %}
+<form action="/registe" method="post">
+    {{form.hidden_tag()}}
+    <table>
+    {{ render_field(form.username) }}
+    {{ render_field(form.password) }}
+    {{ render_field(form.confirm) }}
+    {{ render_field(form.workid) }}
+    {{ render_field(form.email) }}
+    {{ render_field(form.phone) }}
+    {{ render_field(form.section) }}
+    {{ render_field(form.gender) }}
+    {{ render_field(form.user_image) }}
+    </table>
+    {{ form.submit }}
+</form>
+{% endblock %}

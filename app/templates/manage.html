@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% from '_field.html' import render_field %}
+{% from '_field_2.html' import render_field_2 %}
+
+{% block script %}
+<script src="../static/manage.js" type="text/javascript"></script>
+{% endblock %}
+
+{% block content %}
+    <div class="manage_list_area">
+        <p><b>List</b></p>
+        {% for i in notices_num %}
+            <table class="manage_list_area_table">
+                <tr class="manage_list_area_table_tr">
+                    <td class="manage_list_area_table_td_checkbox"><input type="checkbox" id={{i+1}} name="checkbox" {{checked_data[i%10]}}></td>
+                    <td class="manage_list_area_table_td_type">{{notices_list.items[i-(page_index-1)*page_full_num].species}}</td>
+                    <td class="manage_list_area_table_td_title">{{notices_list.items[i-(page_index-1)*page_full_num].title}}</td>
+                </tr>
+            </table>
+        {% endfor %}
+    </div>
+
+    <div class="manage_action_area">
+        <div class="manage_list_area_buttons">
+            <span id="manage_list_area_buttons_add" ><input type="button" onclick="show_add()" value="Add"></span>
+            <span id="manage_list_area_buttons_edit" ><input type="button" onclick="show_edit()" value="Edit"></span>
+            <span id="manage_list_area_buttons_delete" ><input type="button" value="Delete" onclick="show_checkbox()"></span>
+        </div>
+       
+        <div class="manage_list_area_direction">
+            {% if notices_list.has_next %}
+            <span class="manage_list_area_direction_right">
+                <a href="/manage/{{notices_list.next_num}}">
+                    <img src="../static/PIC/forward-vector.png" id="manage_list_area_direction_right_arrow">Next&nbsp;
+                </a>
+            </span>
+            {% endif %}
+            <form action="" method="post" class="manage_list_area_direction_form">
+                {{form1.hidden_tag()}}
+                <span id="manage_list_area_direction_number_input">{{form1.jump_num}}</span>
+                <span><input type="image" id="manage_list_area_direction_number_ok" src="../static/PIC/google-play-flat.png"></span>
+            </form>
+            {% if notices_list.has_prev %}
+            <span class="manage_list_area_direction_left">
+                <a href="/manage/{{notices_list.prev_num}}">
+                    <img src="../static/PIC/back-vector.png" id="manage_list_area_direction_left_arrow">Pre&nbsp;&nbsp;
+                </a>
+            </span>
+            {% endif %}
+        </div>
+    </div>
+
+   <div class="manage_list_add_area" style="display: {{display[0]}}">
+        <h1>Add a Notice or News!</h1>
+        <form method="post" id="manage_list_add_area_form" action="">
+            {{form2.hidden_tag()}}
+            <table>
+            {{ render_field(form2.title_add) }}
+            {{ render_field(form2.author) }}
+            {{ render_field(form2.content_add) }}
+            {{ render_field(form2.species_add) }}
+            </table>
+            <div>
+                <input type="submit" value="Submit">
+                <input type="reset" value="Reset">
+            </div>
+        </form>
+    </div>
+
+    <div class="manage_list_edit_area" style="display: {{display[1]}}">
+        <h1>Edit</h1>
+        <form method="post" id="manage_list_edit_area_form" action="">
+            {{form3.hidden_tag()}}
+            <table>
+            {{ render_field_2(form3.title_edit,oldlist) }}
+            {{ render_field_2(form3.content_edit,oldlist) }}
+            {{ render_field_2(form3.species_edit,oldlist) }}
+            </table>
+            <div>
+                <input type="button" value="Confirm" onclick="edit_confirm()">
+                <input type="submit" value="Update">
+            </div>
+        </form>
+    </div>
+    
+
+<!--<script type="text/javascript">window.onload=tabs_find()</script>-->
+{% endblock %}
